@@ -6,6 +6,9 @@ import Register from './components/Register';
 import Dashboard from './components/Dashboard';
 import ExerciseEntry from './components/ExerciseEntry';
 import Progress from './components/Progress';
+import Plans from './components/Plans';
+import PlanEditor from './components/PlanEditor';
+import PlanExport from './components/PlanExport';
 
 const PrivateRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { currentUser } = useAuth();
@@ -23,6 +26,9 @@ function App() {
             <Route path="/" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
             <Route path="/entry" element={<PrivateRoute><ExerciseEntry /></PrivateRoute>} />
             <Route path="/progress" element={<PrivateRoute><Progress /></PrivateRoute>} />
+            <Route path="/plans" element={<PrivateRoute><Plans /></PrivateRoute>} />
+            <Route path="/plans/:planId" element={<PrivateRoute><PlanEditor /></PrivateRoute>} />
+            <Route path="/plans/:planId/export/:dayId" element={<PrivateRoute><PlanExport /></PrivateRoute>} />
           </Routes>
         </div>
       </AuthProvider>
